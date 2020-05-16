@@ -4,10 +4,13 @@
 #define _CRT_NONSTDC_NO_DEPRECATE
 #define WIN32_LEAN_AND_MEAN
 #include <stdio.h>
-void Setup(int x,int y,int fx, int fy,int height, int width, bool gameOver);
-void draw(int width, int height);
+#include <stdlib.h>
+enum Direction{STOP=0,LEFT,RIGHT,UP,DOWN}dir;
+void draw();
+void input();
+void logic();
+void run(char c);
 void ScoreCounter();
 void LevelCounter();
-void GeneratePoint();
 void LifeCounter();
 #endif // SNAKE_H_INCLUDED
