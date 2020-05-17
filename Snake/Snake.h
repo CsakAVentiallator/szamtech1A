@@ -6,11 +6,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 enum Direction{STOP=0,LEFT,RIGHT,UP,DOWN}dir;
+void getMap();
+void createMap();
 void draw();
 void input();
 void logic();
 void run(char c);
-void ScoreCounter();
-void LevelCounter();
-void LifeCounter();
 #endif // SNAKE_H_INCLUDED
