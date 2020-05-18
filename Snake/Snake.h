@@ -7,7 +7,7 @@
 #include <stdlib.h>
 enum Direction{STOP=0,LEFT,RIGHT,UP,DOWN}dir;
 void getMap();
-void createMap();
+void Catalogue();
 void draw();
 void input();
 void logic();

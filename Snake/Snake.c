@@ -1,34 +1,38 @@
 #include "Snake.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include <conio.h>
 bool gameOver=false;
-int height=20;
-    int width=20;
-    int x=10,y=10,fx=2,fy=2,life=3,score=0,LifeCounter=3;
+int height;
+    int width;
+    int x,y,fx=2,fy=2,life=3,score=0,LifeCounter=3;
     int tailX[100],tailY[100], ntail=0;
-int createMap(int width, int lenght)
+void getMap()
 {
-    int **Map;
-    Map=(int**)malloc(width*sizeof(int*));
-    for(int i=0;i<=height;i++)
+    char *l;
+    l=(char*)malloc(20*sizeof(char));
+    if(!l)
     {
-        Map[i]=(int*)malloc(width*sizeof(int));
+        printf("Baj van fonok!");
+        exit(1);
     }
-    return Map;
+    FILE*f;
+    f=fopen("map.txt","rt");
+    fscanf(f,"%i ",&width);
+    fscanf(f,"%i\n",&height);
+    fscanf(f,"%s",l);
+    x=width/2;
+    y=height/2;
+    Catalogue(l);
 }
-int getMap()
+void Catalogue(char *l)
 {
-    int **Map;
-    fscanf("map.txt","%i\n",&width);
-    fscanf("map.txt","%i\n",&height);
-    Map=createMap(width, height)
-    for(int i=0;i<=width;i++){
-     for(int j=0;j<=height;j++)
-     {
-         fscanf("map.txt","%i\n",&Map[i][j]);
-     }
-    }
-    return Map;
+    FILE*f;
+    f=fopen("Katalogus.txt","wt");
+    fprintf(f,"\nA jatekos neve: %s",l);
+    fprintf(f," es az altala elert eredmeny: %i",score);
 }
 void draw()
 {
@@ -36,7 +40,7 @@ void draw()
    for(int i=0;i<=width;i++){
      for(int j=0;j<=height;j++)
      {
-         if(j==0 || i==0 || i==20 || j==20)
+         if(j==0 || i==0 || i==width || j==height)
          {
              printf("%c",'|');
          }
@@ -110,7 +114,7 @@ void logic()
     {
         if(x==tailX[i] && y==tailY[i])
         {
-            gameOver=true;
+        gameOver=true;
         LifeCounter--;
         x=width/2;
         y=height/2;
@@ -118,20 +122,29 @@ void logic()
     }
     if(x==fx && y==fy){
         score++;
-     fx=1+rand()%18;
-     fy=1+rand()%18;
+     fx=1+rand()%(width-3);
+     fy=1+rand()%(height-3);
      ntail++;
     }
 }
 void run(char c)
 {
 
+    getMap();
     if(c=='\n'){
         while(!gameOver || LifeCounter)
         {
+
             draw();
             input();
             logic();
+
+        if(score%5==0 && score)
+        {
+            width-=2;
+            height-=2;
+            score++;
+        }
         }
         if(gameOver)
         {

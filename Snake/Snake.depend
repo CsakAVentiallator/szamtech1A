@@ -3,18 +3,24 @@
 	<stdio.h>
 	<stdlib.h>
 
-1589737373 source:c:\users\joco\documents\github\szamtech1a\snake\main.c
+1589800823 source:c:\users\joco\documents\github\szamtech1a\snake\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
 	"Snake.c"
+	<windows.h>
+	<windowsx.h>
+	<mmsystem.h>
 
-1589737411 c:\users\joco\documents\github\szamtech1a\snake\snake.c
+1589817642 c:\users\joco\documents\github\szamtech1a\snake\snake.c
 	"Snake.h"
+	<stdio.h>
+	<stdlib.h>
 	<time.h>
+	<string.h>
 	<conio.h>
 
-1589736791 c:\users\joco\documents\github\szamtech1a\snake\snake.h
+1589817580 c:\users\joco\documents\github\szamtech1a\snake\snake.h
 	<stdio.h>
 	<stdlib.h>
 
