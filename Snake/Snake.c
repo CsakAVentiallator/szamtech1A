@@ -146,7 +146,7 @@ void run(char c)
             score++;
         }
         }
-        if(gameOver)
+        if(gameOver && !LifeCounter)
         {
             printf("Well played, your score is:%i",score);
         }
