@@ -66,7 +66,7 @@ void input()
 {
     if(_kbhit())
     {
-        switch(_getch()){
+        switch(_getch()){//a leutott karaktereket kezelo switch
         case 'w':  dir=UP;   break;
         case 'a':  dir=LEFT;   break;
         case 's':  dir=DOWN;   break;
@@ -96,7 +96,7 @@ void logic()
         prevY=prev2Y;
     }
     srand(time(0));
-    switch(dir)
+    switch(dir)//a mozgasokat megvalosito switch
     {
        case UP:  y--; break;
        case DOWN:  y++; break;
