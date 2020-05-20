@@ -4,14 +4,9 @@
 #include <time.h>
 #include <string.h>
 #include <conio.h>
-bool gameOver=false;
-int height;
-    int width;
-    int x,y,fx=2,fy=2,life=3,score=0,LifeCounter=3;
-    int tailX[100],tailY[100], ntail=0;
 void getMap()
 {
-    char *l;
+    char *l;//ebbe olvassa be a jatekos nevet
     l=(char*)malloc(20*sizeof(char));
     if(!l)
     {
@@ -90,6 +85,11 @@ void logic()
     {
         prev2X=tailX[i];
         prev2Y=tailY[i];
+        if(prev2X>=width || prev2Y>=height)
+        {
+            gameOver=true;
+            LifeCounter=0;
+        }
         tailX[i]=prevX;
         tailY[i]=prevY;
         prevX=prev2X;
@@ -144,6 +144,11 @@ void run(char c)
             width-=2;
             height-=2;
             score++;
+        }
+        if(score>20){
+            printf("You completed all 4 levels!!!\n");
+            gameOver=true;
+            LifeCounter=0;
         }
         }
         if(gameOver && !LifeCounter)
